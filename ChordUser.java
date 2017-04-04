@@ -88,8 +88,13 @@ public class ChordUser
                              String path = "./"+guid+"/"+tokens[1];
                              long guidObject = md5(tokens[1]);
                              ChordMessageInterface peer = chord.locateSuccessor(guidObject);
-                             peer.get(guidObject);
-                             peer.
+                             InputStream s = peer.get(guidObject);
+                             FileOutputStream output = new FileOutputStream(path);
+                             while (s.available() > 0){
+                                 output.write(s.read());
+
+                             }
+                             output.close();
                              //TODO: Create a local
                              //    "./"+  guid +"/"+fileName
                              // where filename = tokens[1];
