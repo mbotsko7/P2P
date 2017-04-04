@@ -66,7 +66,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
 	 FileStream file = null;
      try{
          String fileName =  "./"+guid+"/repository/" + guidObject;
-         FileInputStream fStream = new FileInputStream()
+         file = new FileStream(fileName);
      }
      catch (IOException e) {
          System.out.println(e);
@@ -77,6 +77,13 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
     
     public void delete(long guidObject) throws RemoteException {
           //TODO delete the file ./port/repository/guid
+        try{
+            File fileName =  new File("./"+guid+"/repository/" + guidObject);
+            fileName.delete();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public long getId() throws RemoteException {
@@ -107,7 +114,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
     }
     
     public ChordMessageInterface closestPrecedingNode(long key) throws RemoteException {
-	// todo
+
         return successor;
 
     }

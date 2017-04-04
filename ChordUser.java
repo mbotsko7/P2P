@@ -85,6 +85,8 @@ public class ChordUser
                              }
                          }
                          if  (tokens[0].equals("read") && tokens.length == 2) {
+                             String fName = "./"+guid+"/"+tokens[1];
+                             
                              //TODO: Create a local
                              //    "./"+  guid +"/"+fileName
                              // where filename = tokens[1];
