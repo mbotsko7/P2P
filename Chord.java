@@ -114,7 +114,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
     }
     
     public ChordMessageInterface closestPrecedingNode(long key) throws RemoteException {
-
+        //TODO
         return successor;
 
     }
