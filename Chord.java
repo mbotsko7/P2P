@@ -79,6 +79,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
           //TODO delete the file ./port/repository/guid
         try{
             File fileName =  new File("./"+guid+"/repository/" + guidObject);
+
             fileName.delete();
         }
         catch (Exception e) {
@@ -118,7 +119,19 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
         return successor;
 
     }
-    
+
+
+
+    public void leaveRing(String ip){
+        try{
+            ChordMessageInterface pred = getPredecessor();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void joinRing(String ip, int port)  throws RemoteException {
         try{
             System.out.println("Get Registry to joining ring");

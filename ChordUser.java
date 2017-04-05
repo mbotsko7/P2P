@@ -5,6 +5,7 @@ import java.io.*;
 import java.math.BigInteger;
 import java.security.*;
 import java.nio.file.*;
+import java.util.concurrent.ExecutionException;
 
 public class ChordUser
 {
@@ -66,6 +67,14 @@ public class ChordUser
                                  e.printStackTrace();
                              }
                          }
+                         if (tokens[0].equals("leave") && tokens.length == 2){
+                            try{
+                                chord.leaveRing(tokens[1]);
+                            }
+                            catch (Exception e){
+                                e.printStackTrace();
+                            }
+                         }
                          if (tokens[0].equals("print")) {
                              chord.Print();
                          }
@@ -106,11 +115,15 @@ public class ChordUser
                              // Store the content of stream in the file that you create
                         }
                         if  (tokens[0].equals("delete") && tokens.length == 2) {
+                            long guidObject = md5(tokens[1]);
+                            ChordMessageInterface peer = chord.locateSuccessor(guidObject);
+                            peer.delete(guidObject);
                             // Obtain the chord that is responsable for the file:
                             //  peer = chord.locateSuccessor(guidObject);
                             // where guidObject = md5(fileName)
                             // Call peer.delete(guidObject)
                         }
+
                      }
                  }
                  catch(RemoteException e)
