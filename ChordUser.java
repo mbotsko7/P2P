@@ -144,6 +144,12 @@ public class ChordUser
         }
         try{
             ChordUser chordUser=new ChordUser( Integer.parseInt(args[0]));
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    System.out.println("Forced to disconnect, now leaving");
+                    chordUser.chord.leaveRing();
+                }
+            });
         }
         catch (Exception e) {
            e.printStackTrace();
