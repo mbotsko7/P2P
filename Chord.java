@@ -116,7 +116,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
     
     public ChordMessageInterface closestPrecedingNode(long key) throws RemoteException {
         //TODO
-        return successor;
+        return predecessor; //return successor;
 
     }
 
@@ -125,6 +125,20 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
     public void leaveRing(String ip){
         try{
             ChordMessageInterface pred = getPredecessor();
+            ChordMessageInterface succ = locateSuccessor(guid);
+            notify(pred);
+            fixFingers();
+            stabilize();
+
+            String path = "./"+guid+"/repository";
+            File[] f = new File(path).listFiles();
+            for (File myfile:
+                 f) {
+                Long longislong = Long.parseLong(myfile.getName())
+                succ.put(longislong, get(longislong));
+                delete(longislong);
+            }
+
 
         }
         catch (Exception e){
