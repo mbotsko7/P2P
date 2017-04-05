@@ -68,9 +68,9 @@ public class ChordUser
                                  e.printStackTrace();
                              }
                          }
-                         if (tokens[0].equals("leave") && tokens.length == 2){
+                         if (tokens[0].equals("leave")){
                             try{
-                                chord.leaveRing(tokens[1]);
+                                chord.leaveRing();
                             }
                             catch (Exception e){
                                 e.printStackTrace();

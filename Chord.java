@@ -122,7 +122,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
 
 
 
-    public void leaveRing(String ip){
+    public void leaveRing(){
         try{
             ChordMessageInterface pred = getPredecessor();
             ChordMessageInterface succ = locateSuccessor(guid);
