@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 public class ChordUser
 {
      int port;
+    Chord    chord;
     
     private long md5(String objectName)
     {
@@ -39,7 +40,7 @@ public class ChordUser
              public void run() {
                  try {
                      long guid = md5("" + port);
-                     Chord    chord = new Chord(port, guid);
+                     chord = new Chord(port, guid);
                      try{
                          Files.createDirectories(Paths.get(guid+"/repository"));
                      }
