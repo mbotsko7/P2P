@@ -137,7 +137,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
                  f) {
                 Long longislong = Long.parseLong(myfile.getName());
                 succ.put(longislong, get(longislong));
-                delete(longislong);
+
             }
 
 
@@ -208,6 +208,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
 	 // TODO 
 	 //transfer keys in the range [j,i) to j;
              predecessor = j;
+
     }
     
     public void fixFingers() {
