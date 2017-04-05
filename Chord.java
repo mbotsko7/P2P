@@ -126,7 +126,8 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
         try{
             ChordMessageInterface pred = getPredecessor();
             ChordMessageInterface succ = locateSuccessor(guid);
-            notify(pred);
+            succ.notify(pred);
+
             fixFingers();
             stabilize();
 
