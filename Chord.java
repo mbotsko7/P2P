@@ -134,7 +134,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
             File[] f = new File(path).listFiles();
             for (File myfile:
                  f) {
-                Long longislong = Long.parseLong(myfile.getName())
+                Long longislong = Long.parseLong(myfile.getName());
                 succ.put(longislong, get(longislong));
                 delete(longislong);
             }
