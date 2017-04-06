@@ -124,9 +124,9 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
 
     public void leaveRing(){
         try{
-            ChordMessageInterface pred = getPredecessor();
-            ChordMessageInterface succ = locateSuccessor(guid);
-            succ.notify(pred);
+//            ChordMessageInterface pred = getPredecessor();
+//            ChordMessageInterface succ = locateSuccessor(guid);
+            successor.notify(predecessor);
 
             fixFingers();
             stabilize();
@@ -136,7 +136,7 @@ public class Chord extends java.rmi.server.UnicastRemoteObject implements ChordM
             for (File myfile:
                  f) {
                 Long longislong = Long.parseLong(myfile.getName());
-                succ.put(longislong, get(longislong));
+                successor.put(longislong, get(longislong));
 
             }
 
